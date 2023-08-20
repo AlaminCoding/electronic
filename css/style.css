@@ -77,7 +77,7 @@ a {
 
 header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.9), transparent);
-  padding: 20px 5%;
+  padding: 10px 5%;
   position: absolute;
   width: 100%;
   top: 0;
@@ -86,6 +86,44 @@ header {
   align-items: center;
   justify-content: space-between;
   z-index: 9;
+}
+@media screen and (min-width: 768px) {
+  header {
+    padding: 20px 5%;
+  }
+}
+header .main-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+header .main-logo .toggle {
+  display: block;
+  cursor: pointer;
+}
+header .main-logo .toggle i {
+  font-size: 30px;
+}
+@media screen and (min-width: 1200px) {
+  header .main-logo .toggle {
+    display: none;
+  }
+}
+header .main-logo .logo {
+  display: block;
+}
+header .main-logo .logo img {
+  width: 100px;
+}
+@media screen and (min-width: 768px) {
+  header .main-logo .logo img {
+    width: auto;
+  }
+}
+@media screen and (min-width: 576px) {
+  header .main-logo {
+    gap: 40px;
+  }
 }
 header ul {
   display: flex;
@@ -96,19 +134,25 @@ header nav {
   flex-direction: column;
   gap: 20px;
   position: fixed;
-  background-color: #ff5400;
-  height: calc(100vh - 104px);
+  background-color: #272727;
+  height: 100vh;
   width: 100%;
-  top: 104px;
-  left: 0;
+  top: 0;
+  left: -100%;
   align-items: flex-start;
   padding-left: 5%;
-  padding-top: 30px;
+  padding-right: 5%;
+  padding-top: 74px;
+  z-index: -1;
+  transition: 0.3s ease-in-out;
 }
 header nav .top-nav {
   gap: 20px;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
+  border-top: 1px solid #fcfcfc;
+  padding-top: 20px;
 }
 header nav .top-nav a {
   opacity: 0.8;
@@ -116,11 +160,14 @@ header nav .top-nav a {
 }
 header nav .bottom-nav {
   padding: 0;
-  border-radius: 60px;
+  border-radius: 0px;
   gap: 20px;
-  position: relative;
+  position: static;
   flex-direction: column;
   align-items: flex-start;
+  padding-top: 20px;
+  width: 100%;
+  border-top: 1px solid #fcfcfc;
 }
 header nav .bottom-nav:after {
   content: "";
@@ -148,17 +195,37 @@ header nav .bottom-nav li > p {
   gap: 10px;
 }
 header nav .bottom-nav li .child-menu {
-  backdrop-filter: blur(50px);
-  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background-color: #272727;
   position: absolute;
-  top: 90px;
+  top: 78px;
   left: 0;
   border-radius: 10px;
   width: 100%;
-  padding: 20px;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+  padding: 20px 5%;
   opacity: 0;
   transform: translateY(50px);
   pointer-events: none;
+}
+header nav .bottom-nav li .child-menu::-webkit-scrollbar {
+  display: none;
+}
+header nav .bottom-nav li .child-menu .child-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0px 20px;
+}
+header nav .bottom-nav li .child-menu .child-head h2 {
+  font-size: 20px;
+}
+header nav .bottom-nav li .child-menu .child-head i {
+  font-size: 25px;
+  cursor: pointer;
 }
 header nav .bottom-nav li .child-menu .title-link {
   background-color: rgba(0, 0, 0, 0.2);
@@ -176,20 +243,36 @@ header nav .bottom-nav li .child-menu .title-link a {
   display: inline-block;
 }
 header nav .bottom-nav li .child-menu .logo-block {
-  padding: 30px 20px;
+  padding: 20px 8px;
   display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 20px;
+  grid-template-columns: auto auto;
+  gap: 5px;
+}
+@media screen and (min-width: 576px) {
+  header nav .bottom-nav li .child-menu .logo-block {
+    grid-template-columns: auto auto auto;
+  }
+}
+header nav .bottom-nav li .child-menu .logo-block:nth-last-child(1) {
+  padding: 30px 0px 10px 0px;
+  gap: 30px;
 }
 header nav .bottom-nav li .child-menu .logo-block .logo-box {
+  background-color: transparent;
+  border-radius: 60px;
+  padding: 8px 8px;
   display: flex;
   gap: 10px;
   align-items: center;
+  transition: 0.3s;
 }
 header nav .bottom-nav li .child-menu .logo-block .logo-box img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+header nav .bottom-nav li .child-menu .logo-block .logo-box:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 header nav .bottom-nav li .child-menu .logo-block .logo-box-col {
   display: block;
@@ -201,9 +284,28 @@ header nav .bottom-nav li .child-menu .logo-block .logo-box-col img {
 header nav .bottom-nav li .child-menu .logo-block .logo-box-col p {
   margin-top: 10px;
 }
+@media screen and (min-width: 768px) {
+  header nav .bottom-nav li .child-menu {
+    height: auto;
+    top: 108px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  header nav .bottom-nav li .child-menu {
+    top: 90px;
+    background-color: transparent;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    padding: 20px;
+  }
+  header nav .bottom-nav li .child-menu .child-head {
+    display: none;
+  }
+}
 header nav .bottom-nav li .child-menu-open {
   transition: 0.3s;
   opacity: 1;
+  z-index: 1;
   transform: translateY(0px);
   pointer-events: all;
 }
@@ -293,6 +395,11 @@ header nav .bottom-nav .search-close {
 header nav .bottom-nav .search-close-show {
   display: block;
 }
+@media screen and (min-width: 768px) {
+  header nav {
+    padding-top: 104px;
+  }
+}
 @media screen and (min-width: 1200px) {
   header nav {
     background-color: transparent;
@@ -302,11 +409,18 @@ header nav .bottom-nav .search-close-show {
     padding-top: 0;
   }
   header nav .top-nav {
+    border: none;
+    width: auto;
     flex-direction: row;
     align-items: center;
     gap: 40px;
+    padding: 0;
   }
   header nav .bottom-nav {
+    border-radius: 60px;
+    border: none;
+    width: auto;
+    position: relative;
     flex-direction: row;
     align-items: center;
     padding: 0px 0px 0px 35px;
@@ -316,8 +430,11 @@ header nav .bottom-nav .search-close-show {
     display: block;
   }
 }
+header .nav-open {
+  left: 0;
+}
 header .cart-user {
-  gap: 30px;
+  gap: 10px;
 }
 header .cart-user .user {
   background-color: #272727;
@@ -330,6 +447,86 @@ header .cart-user .user a {
 header .cart-user a {
   display: inline-block;
   font-size: 25px;
+}
+header .cart-user .mobile-search .mobile-search-btn {
+  border: none;
+  height: 55px;
+  width: 55px;
+  background-color: #ff5400;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+header .cart-user .mobile-search .mobile-search-btn i {
+  font-size: 15px;
+  color: #fcfcfc;
+  transition: 0.3s;
+}
+header .cart-user .mobile-search .mobile-search-btn:hover i {
+  transform: scale(1.2);
+}
+@media screen and (min-width: 1200px) {
+  header .cart-user .mobile-search .mobile-search-btn {
+    display: none;
+  }
+}
+header .cart-user .mobile-search .mobile-search-input {
+  position: absolute;
+  top: 10px;
+  right: 5%;
+  height: 55px;
+  width: 55px;
+  border-radius: 60px;
+  border: none;
+  display: flex;
+  align-items: center;
+  background-color: #ff5400;
+  transition: 0.3s;
+}
+header .cart-user .mobile-search .mobile-search-input input {
+  padding-right: 65px;
+  padding-left: 30px;
+  display: none;
+  height: 30px;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: #fcfcfc;
+}
+header .cart-user .mobile-search .mobile-search-input input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+header .cart-user .mobile-search .mobile-search-input input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+header .cart-user .mobile-search .mobile-search-input input:focus {
+  outline: 0;
+}
+@media screen and (min-width: 768px) {
+  header .cart-user .mobile-search .mobile-search-input {
+    top: 25px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  header .cart-user .mobile-search .mobile-search-input {
+    display: none;
+  }
+}
+header .cart-user .mobile-search .mobile-search-input-show {
+  width: 91%;
+}
+header .cart-user .mobile-search .mobile-search-input-show input {
+  display: block;
+  transition-delay: 0.3s;
+}
+@media screen and (min-width: 576px) {
+  header .cart-user {
+    gap: 30px;
+  }
 }
 
 .menu-overlay {
@@ -344,7 +541,12 @@ header .cart-user a {
 }
 
 .overlay-show {
-  display: block;
+  display: none;
+}
+@media screen and (min-width: 1200px) {
+  .overlay-show {
+    display: block;
+  }
 }
 
 .hero {

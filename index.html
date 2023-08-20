@@ -15,10 +15,15 @@
   </head>
   <body>
     <header>
-      <a href="/" class="logo">
-        <img src="/logo.webp" alt="Site's main logo" />
-      </a>
-      <nav>
+      <div class="main-logo">
+        <div class="toggle">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <a href="/" class="logo">
+          <img src="/logo.webp" alt="Site's main logo" />
+        </a>
+      </div>
+      <nav id="main-nav">
         <ul class="top-nav">
           <li><a href="#">Trending</a></li>
           <li><a href="#">Pre-orders</a></li>
@@ -27,12 +32,16 @@
         </ul>
         <ul class="bottom-nav">
           <li class="nav-link">
-            <p>
+            <p class="nav-link-btn">
               <i class="fa-solid fa-display"></i>
               PC
               <i class="fa-solid fa-chevron-down"> </i>
             </p>
             <div class="child-menu">
+              <div class="child-head">
+                <h2>PC</h2>
+                <i class="fa-solid fa-xmark child-close-btn"></i>
+              </div>
               <div class="title-link">
                 <h2>Platforms</h2>
                 <a href="#">View all</a>
@@ -92,11 +101,15 @@
             </div>
           </li>
           <li class="nav-link">
-            <p>
+            <p class="nav-link-btn">
               <i class="fa-brands fa-playstation"> </i> Playstation
               <i class="fa-solid fa-chevron-down"> </i>
             </p>
             <div class="child-menu">
+              <div class="child-head">
+                <h2>Playstation</h2>
+                <i class="fa-solid fa-xmark child-close-btn"></i>
+              </div>
               <div class="title-link">
                 <h2>Platforms</h2>
                 <a href="#">View all</a>
@@ -156,11 +169,15 @@
             </div>
           </li>
           <li class="nav-link">
-            <p>
+            <p class="nav-link-btn">
               <i class="fa-brands fa-xbox"></i>Xbox
               <i class="fa-solid fa-chevron-down"> </i>
             </p>
             <div class="child-menu">
+              <div class="child-head">
+                <h2>Xbox</h2>
+                <i class="fa-solid fa-xmark child-close-btn"></i>
+              </div>
               <div class="title-link">
                 <h2>Platforms</h2>
                 <a href="#">View all</a>
@@ -221,11 +238,15 @@
             </div>
           </li>
           <li class="nav-link">
-            <p>
+            <p class="nav-link-btn">
               <img src="/nintendo.svg" alt="" /> <span>Nintendo</span>
               <i class="fa-solid fa-chevron-down"></i>
             </p>
             <div class="child-menu">
+              <div class="child-head">
+                <h2>PC</h2>
+                <i class="fa-solid fa-xmark child-close-btn"></i>
+              </div>
               <div class="title-link">
                 <h2>Platforms</h2>
                 <a href="#">View all</a>
@@ -303,6 +324,14 @@
         </li>
         <li class="user">
           <a href="#"><i class="fa-regular fa-user"></i></a>
+        </li>
+        <li class="mobile-search">
+          <button class="mobile-search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <div class="mobile-search-input">
+            <input type="text" placeholder="Minecraft, RPG, Multiplier" />
+          </div>
         </li>
       </ul>
     </header>
